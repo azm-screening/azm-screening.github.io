@@ -215,7 +215,7 @@ function reset(){
 }
 $('next').addEventListener('click',()=>{
   if(step===0){
-    if(!$('nm').value.trim()||!$('cl').value||!facName()){$('e0').textContent='Please fill in your name, cluster and facility.';return}
+    if(!$('nm').value.trim()||!$('emp').value.trim()||!$('cl').value||!facName()){$('e0').textContent='Please fill in your name, employee number, facility and cluster.';return}
     $('e0').textContent='';step=1;
   }else if(step===1){step=2}
   else if(step===2){
@@ -229,7 +229,7 @@ $('next').addEventListener('click',()=>{
     $('certTxt').textContent=`${$('nm').value.trim()} · ${facName()} · ${$('cl').value} · ${d}`;
     const F='https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAYAAFVyitJUOVE5VzBIVllVRVlXVEtEM1oyVDZYMzM4OC4u&lang=en-US';
     const e=encodeURIComponent;
-    $('reg').href=F+'&r4eef93ec28cb4000a84c308488f4e4a9='+e($('nm').value.trim())+'&r43f58fff590c4ec89186c1bc0ff9fbd6='+e(facName())+'&rdc89d283651e470cb2ba8bc1d13551ec='+e($('cl').value)+'&r4dd9529e3d804a8088e1d6e06fe9933c='+score+'&r5aab576ca7124fbeb49da124604ae494=Yes';
+    $('reg').href=F+'&r4eef93ec28cb4000a84c308488f4e4a9='+e($('nm').value.trim())+'&r9df7e398985042efb5ef974cd59339d0='+e($('emp').value.trim())+'&r43f58fff590c4ec89186c1bc0ff9fbd6='+e(facName())+'&rdc89d283651e470cb2ba8bc1d13551ec='+e($('cl').value)+'&r4dd9529e3d804a8088e1d6e06fe9933c='+score+'&r5aab576ca7124fbeb49da124604ae494=Yes';
   }
   show();
 });
