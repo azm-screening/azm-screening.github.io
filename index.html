@@ -178,14 +178,14 @@ button.ghost{background:transparent;color:var(--teal)}
 <script>
 {
 const Q=[
-["Who should be screened?",["Only patients who look like they use substances","Every adult once a year, at any visit","Every adult at every visit","Only patients who ask"],1,"Ask every adult once a year. Screening only patients who look at risk misses many cases."],
-["A patient answers \"once\" to Q2. What is the result?",["Negative, once is not enough","Positive","Ask again next year","Positive only if it happened this month"],1,"Any answer of 1 or more is positive."],
-["A patient answers \"no\" to the alcohol pre-screen. What do you do next?",["Ask Q1 anyway","Go to Q2","Book Azm triage","End the screening"],1,"The alcohol part is negative, but Q2 is asked of everyone."],
-["You are screening a 40-year-old woman. Which number do you use in Q1?",["5 or more drinks","4 or more drinks","3 or more drinks","Any drinking"],1,"Use 4 for women of any age and men 65 and older; 5 for men under 65."],
-["Which counts as nonmedical use of a prescription medicine?",["Paracetamol for a headache","Tramadol without a prescription, for the feeling it gives","An antibiotic taken as prescribed","Insulin"],1,"Taking a medicine for the feeling it gives, or without a prescription, is nonmedical use."],
-["Q1 is negative and Q2 is positive. Is the screen positive?",["No, both must be positive","Yes, one positive answer is enough","Only if Q2 is more than 5 times","Repeat both questions"],1,"If Q1 or Q2 is 1 or more, the screen is positive."],
-["The screen is positive and the patient agrees. What is the next step?",["Give the Azm number to call later","Book Azm triage in TrakCare before the patient leaves","Order a urine drug test","Wait until the next visit"],1,"Booking before the patient leaves makes it more likely they reach Azm."],
-["A patient has severe withdrawal symptoms or suicidal thoughts. What do you do?",["Book routine Azm triage","Send to the Security Forces Hospital ER the same day","Give the Azm QR code","Repeat the screening questions"],1,"Red flags don't wait for an appointment. Send to the ER the same day."]
+["Who should be screened?", ["Only patients who look like they use substances", "Every adult once a year, at any visit", "Every adult at every visit", "Only patients who ask"], 1,"Ask every adult once a year. Screening only patients who look at risk misses many cases."],
+["A patient answers \"once\" to Q2. What is the result?", ["Negative, once is not enough", "Ask again next year", "Positive", "Positive only if it happened this month"], 2,"Any answer of 1 or more is positive."],
+["A patient answers \"no\" to the alcohol pre-screen. What do you do next?", ["Go to Q2", "Ask Q1 anyway", "Book Azm triage", "End the screening"], 0,"The alcohol part is negative, but Q2 is asked of everyone."],
+["You are screening a 40-year-old woman. Which number do you use in Q1?", ["5 or more drinks", "3 or more drinks", "Any drinking", "4 or more drinks"], 3,"Use 4 for women of any age and men 65 and older; 5 for men under 65."],
+["Which counts as nonmedical use of a prescription medicine?", ["Paracetamol for a headache", "An antibiotic taken as prescribed", "Tramadol without a prescription, for the feeling it gives", "Insulin"], 2,"Taking a medicine for the feeling it gives, or without a prescription, is nonmedical use."],
+["Q1 is negative and Q2 is positive. Is the screen positive?", ["Yes, one positive answer is enough", "No, both must be positive", "Only if Q2 is more than 5 times", "Repeat both questions"], 0,"If Q1 or Q2 is 1 or more, the screen is positive."],
+["The screen is positive and the patient agrees. What is the next step?", ["Give the Azm number to call later", "Order a urine drug test", "Wait until the next visit", "Book Azm triage in TrakCare before the patient leaves"], 3,"Booking before the patient leaves makes it more likely they reach Azm."],
+["A patient has severe withdrawal symptoms or suicidal thoughts. What do you do?", ["Book routine Azm triage", "Send to the Security Forces Hospital ER the same day", "Give the Azm QR code", "Repeat the screening questions"], 1,"Red flags don't wait for an appointment. Send to the ER the same day."]
 ];
 const $=id=>document.getElementById(id);
 let step=0,graded=false,passed=false,score=0;
