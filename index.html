@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Azm Screening Training</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE: calm, clinical, official MOI training
+   IDEA: a printed training booklet with a tear-off acknowledgment slip
+   PICTURE: the working training itself, step by step, with a progress rail
+   COLOUR and TYPE: deep teal ground band, white sheet, gold accent; IBM Plex Sans
+   LAYOUT: one calm column, steps one at a time, buttons at the foot */
+:root{color-scheme:light dark;--bg:light-dark(#eef3f4,#0b1d22);--sheet:light-dark(#ffffff,#122a31);--ink:light-dark(#17262b,#e6eff1);--mute:light-dark(#4e5f64,#a9bcc1);--teal:light-dark(#0e4f5c,#5fb3c1);--band:#0e4f5c;--gold:light-dark(#9a7838,#d6b26c);--line:light-dark(#d5e0e3,#24434b);--ok:light-dark(#1f6b4d,#6fd3a4);--bad:light-dark(#a3342b,#f08a80);--soft:light-dark(#f4f8f8,#0f242a)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 "IBM Plex Sans","IBM Plex Sans Arabic",system-ui,sans-serif;overflow-x:clip}
+.ar{font-family:"IBM Plex Sans Arabic",sans-serif;direction:rtl;text-align:right}
+header{background:var(--band);color:#fff;padding:clamp(24px,4vw,44px) max(5vw,16px) 84px}
+header .org{font-size:13px;opacity:.85;margin:0}
+header h1{font-size:clamp(26px,4vw,38px);line-height:1.15;margin:8px 0 6px;text-wrap:balance}
+header .meta{font-size:15px;opacity:.85;margin:0}
+main{max-width:780px;margin:-60px auto 40px;padding:0 16px}
+.sheet{background:var(--sheet);border:1px solid var(--line);border-radius:16px;padding:clamp(20px,4vw,36px);box-shadow:0 10px 30px rgb(0 0 0/.08)}
+.rail{display:flex;gap:6px;margin:0 0 22px;padding:0;list-style:none}
+.rail li{flex:1;font-size:13px;color:var(--mute);border-top:4px solid var(--line);padding-top:8px}
+.rail li.on{color:var(--teal);border-color:var(--teal);font-weight:600}
+.rail li.done{border-color:var(--gold)}
+h2{font-size:24px;line-height:1.3;margin:0 0 6px}
+h3{font-size:18px;margin:28px 0 8px;color:var(--teal)}
+.sub{color:var(--mute);margin:0 0 18px;font-size:15px}
+label{display:block;font-weight:600;margin:14px 0 6px}
+input,select{width:100%;font:inherit;font-size:16px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:var(--soft);color:var(--ink);min-height:44px}
+input:focus,select:focus,button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.qs{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin:10px 0}
+.qrow{display:grid;gap:4px;padding:12px 16px;border-top:1px solid var(--line)}
+.qrow:first-child{border-top:0}
+.qrow b{color:var(--teal)}
+.qrow .ar{color:var(--ink);font-size:16px}
+.pend{display:inline-block;font-size:12px;color:var(--bad);border:1px solid var(--bad);border-radius:6px;padding:0 6px;margin-inline-start:6px}
+.sayar{font-family:"IBM Plex Sans Arabic",sans-serif;direction:rtl;text-align:right;display:block;margin-top:6px}
+table.t{width:100%;border-collapse:collapse;margin:10px 0;font-size:15px}
+table.t th,table.t td{border-bottom:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+table.t th{color:var(--mute);font-weight:600;font-size:14px}
+.pos{color:var(--bad);font-weight:600}.neg{color:var(--ok);font-weight:600}
+.rule{padding:14px 16px;border-radius:12px;background:light-dark(#fbf3e3,#2b2412);border:1px solid var(--gold);margin:14px 0}
+ul.tips,ol.tips{padding-inline-start:22px;margin:8px 0}
+blockquote{margin:12px 0;padding:12px 16px;background:var(--soft);border-inline-start:4px solid var(--gold);border-radius:8px}
+.dd{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.dd div{border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:15px}
+.dd h4{margin:0 0 4px;font-size:15px}
+.do h4{color:var(--ok)}.dont h4{color:var(--bad)}
+.dd ul{margin:0;padding-inline-start:18px}
+.q{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0}
+.q legend{font-weight:600;padding:0 4px}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border-radius:8px;cursor:pointer;margin:2px 0}
+.opt:hover{background:var(--soft)}
+.opt input{width:20px;height:20px;min-height:0;margin-top:4px;flex:none;accent-color:var(--teal)}
+.opt.right{background:light-dark(#e5f4ec,#12382a)}.opt.wrong{background:light-dark(#fbe7e4,#3a1916)}
+.fb{font-size:14px;margin:6px 0 0;color:var(--mute)}
+.score{display:flex;gap:16px;align-items:center;padding:16px;border-radius:12px;background:var(--soft);margin:16px 0}
+.score strong{font-size:40px;line-height:1;color:var(--teal)}
+.score.fail strong{color:var(--bad)}
+.ack{border:2px dashed var(--gold);border-radius:12px;padding:16px;margin-top:10px}
+.chk{display:flex;gap:10px;align-items:center;font-weight:600;margin-top:10px}
+.chk input{width:22px;height:22px;min-height:0;accent-color:var(--teal)}
+.cert{text-align:center;padding:24px;border:1px solid var(--gold);border-radius:14px}
+.cert h2{color:var(--teal)}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:26px}
+.reg{display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:10px;background:var(--teal);color:#fff;font-weight:600;text-decoration:none;margin-top:4px}
+button{font:inherit;font-weight:600;min-height:46px;padding:0 22px;border-radius:10px;border:1px solid var(--teal);background:var(--teal);color:#fff;cursor:pointer}
+button.ghost{background:transparent;color:var(--teal)}
+.err{color:var(--bad);font-size:14px;min-height:20px;margin:8px 0 0}
+.note{font-size:13px;color:var(--mute);text-align:center;margin:14px 0 0}
+[hidden]{display:none!important}
+@media(max-width:600px){.dd{grid-template-columns:minmax(0,1fr)}.rail li{font-size:12px}.nav{flex-direction:column-reverse}.nav button{width:100%}table.t{font-size:14px}}
+@media(prefers-reduced-motion:no-preference){.step{animation:in .25s ease}@keyframes in{from{opacity:0;transform:translateY(6px)}}}
+</style>
+</head>
+<body>
+<header>
+<p class="org">General Directorate of Medical Services, Ministry of Interior</p>
+<h1>Azm Screening: Family Physician Self-Training</h1>
+<p class="meta">About 15 minutes · Lesson, quiz and acknowledgment</p>
+</header>
+<main>
+<div class="sheet">
+<ol class="rail" id="rail"><li>Details</li><li>Lesson</li><li>Quiz</li><li>Acknowledgment</li></ol>
+
+<section class="step" id="s0">
+<h2>Physician details</h2>
+<p class="sub">Used to count how many physicians are trained in each facility and cluster.</p>
+<label for="nm">Full name</label><input id="nm" autocomplete="name">
+<label for="emp">Employee number</label><input id="emp" inputmode="numeric">
+<label for="fac">Facility</label>
+<select id="fac"><option value="">Select your facility</option><option>Al Jouf Comprehensive Specialized Clinics for the Security Forces</option><option>Al Kharj Comprehensive Specialized Clinics for the Security Forces</option><option>Al Qassim Comprehensive Specialized Clinics for the Security Forces</option><option>Al Qurayat Comprehensive Specialized Clinics for the Security Forces</option><option>Al-Hasa Comprehensive Specialized Clinics</option><option>Arar Comprehensive Specialized Clinics</option><option>Aseer PHC</option><option>Baha PHC</option><option>Bisha PHC</option><option>Border Guard Medical Center</option><option>Dammam Night Clinics</option><option>Diabetic Care Center</option><option>East Riyadh Clinics</option><option>Emirate of Makkah Province</option><option>Family and Community Medicine</option><option>Field Clinics</option><option>Hafer Albatin Specialized Clinics</option><option>Hail Comprehensive Specialized Clinics for the Security Forces</option><option>Jazan PHC</option><option>Jeddah Hajj Conference</option><option>Jeddah PHC</option><option>King Fahad Security College Medical Center</option><option>Madinah Assakab PHC</option><option>Madinah PHC</option><option>Makkah PHC</option><option>Makkah Taneem PHC</option><option>Mental Health Hospital</option><option>Ministry Of Interior Clinics</option><option>Najran PHC</option><option>Palace Clinics</option><option>PCC Mujahideen</option><option>Rafha Comprehensive Specialized Clinics</option><option>Security Force Hospital Program Makkah</option><option>Security Forces Hospital Dammam</option><option>Security Forces Hospital Riyadh</option><option>Tabuk Comprehensive Specialized Clinics for Security Forces</option><option>Taif PHC</option><option>Unified Primary Healthcare Center at the Security Complex</option><option>Wadi Ad-Dwasir Comprehensive Specialized Clinics for Security Forces</option><option>West Riyadh Clinics</option><option value="other">Other (not listed)</option></select>
+<div id="otherBox" hidden><label for="facOther">Facility name</label><input id="facOther"></div>
+<label for="cl">Cluster</label>
+<select id="cl"><option value="">Select</option><option>Central and Northern</option><option>Western-Southern</option><option>Eastern</option></select>
+<p class="err" id="e0"></p>
+</section>
+
+<section class="step" id="s1" hidden>
+<h2>Lesson</h2>
+<p class="sub">About 5 minutes.</p>
+
+<h3>1. Why we screen</h3>
+<p>Substance use is common but under-recognized in primary care, and patients rarely raise it themselves. In the Saudi National Mental Health Survey, about 4% of adults had a substance use disorder at some point in their lives, and fewer than half sought treatment. Two questions take less than a minute and find people who would otherwise go unseen.</p>
+<ul class="tips"><li><b>Early detection</b> opens the door to help before harm builds up.</li><li><b>Brief counseling works:</b> it reduces unhealthy drinking in adults.</li><li><b>No one feels singled out</b> when every adult is asked the same way.</li><li><b>It's recommended:</b> USPSTF advises screening adults for unhealthy alcohol use (2018) and drug use (2020), Grade B.</li><li>Ask <b>every adult once a year, at any visit</b>, or sooner if there is clinical concern (for example injuries, repeated sick leave, or requests for tramadol or pregabalin).</li></ul>
+
+<h3>2. The questions</h3>
+<p>Use the exact wording. The accuracy of the screen depends on it.</p>
+<div class="qs">
+<div class="qrow"><b>Pre-screen (alcohol)</b><span>"Do you sometimes drink alcoholic beverages?"</span><span class="ar">تشرب أحياناً مشروبات فيها كحول؟</span></div>
+<div class="qrow"><b>Q1 Alcohol (only if the pre-screen answer is yes)</b><span>"How many times in the past year have you had <b>5</b> or more drinks in a day?"</span><span class="ar">في آخر ١٢ شهر، كم مرة صار إنك شربت ٥ مشروبات كحولية أو أكثر في يوم واحد؟</span></div>
+<div class="qrow"><b>Q2 Drugs or medicines (ask everyone)</b><span>"How many times in the past year have you used an illegal drug or used a prescription medication for nonmedical reasons?"</span><span class="ar">في آخر ١٢ شهر، كم مرة استخدمت مادة مخدرة، أو أخذت دواء يحتاج وصفة طبية بس مو عشان العلاج؟ (مثلاً عشان الإحساس أو الراحة اللي يعطيك)</span></div>
+</div>
+
+<h3>3. The number in Q1: 4 or 5</h3>
+<p>Q1 counts days of <b>heavy drinking</b>. The number that counts as heavy depends on the patient:</p>
+<table class="t"><thead><tr><th>Patient</th><th>Ask about</th></tr></thead><tbody>
+<tr><td>Men under 65</td><td><b>5</b> or more drinks in a day</td></tr>
+<tr><td>Women (any age)</td><td><b>4</b> or more drinks in a day</td></tr>
+<tr><td>Men 65 and older</td><td><b>4</b> or more drinks in a day</td></tr>
+</tbody></table>
+<p>One drink is about 14 g of alcohol: a can of beer, a glass of wine, or a single shot of spirits.</p>
+
+<h3>4. What counts as positive</h3>
+<p>Both questions ask <b>how many times</b>. You only need to know: zero, or one or more?</p>
+<table class="t"><thead><tr><th>Question</th><th>Answer</th><th>Result</th></tr></thead><tbody>
+<tr><td>Pre-screen</td><td>No</td><td class="neg">Alcohol negative. Go to Q2</td></tr>
+<tr><td>Pre-screen</td><td>Yes</td><td>Not positive yet. Ask Q1</td></tr>
+<tr><td>Q1</td><td>Never (0)</td><td class="neg">Alcohol negative</td></tr>
+<tr><td>Q1</td><td>Once, 3 times, every weekend</td><td class="pos">Positive</td></tr>
+<tr><td>Q2</td><td>Never (0)</td><td class="neg">Drugs negative</td></tr>
+<tr><td>Q2</td><td>Once, a few times</td><td class="pos">Positive</td></tr>
+</tbody></table>
+<div class="rule"><b>The rule:</b> if <b>Q1 or Q2</b> is 1 or more, the screen is positive. One positive answer is enough to offer Azm triage.</div>
+<p><b>"Nonmedical reasons"</b> means taking a prescription medicine for the feeling it gives, or without a prescription, for example tramadol or pregabalin.</p>
+
+<h3>5. How to ask</h3>
+<p>Start with a sentence that reassures the patient:</p>
+<blockquote>"I ask all my patients these two questions about alcohol and medications. It's routine, and it's for your health and safety. Your answers stay in your medical record and have no consequences for your work or any legal matter."<span class="pend">pending legal confirmation</span><span class="sayar">"نسأل كل مراجعينا سؤالين عن الكحول وبعض الأدوية، وهذا شي روتيني لصحتك وسلامتك. إجاباتك تبقى في ملفك الطبي، وما يترتب عليها أي شي يخص عملك أو أي أمور قانونية."</span></blockquote>
+<div class="dd"><div class="do"><h4>Do</h4><ul><li>Ask in private, without companions</li><li>Use the exact wording</li><li>Keep a calm, neutral tone</li><li>Thank the patient for being honest</li></ul></div><div class="dont"><h4>Avoid</h4><ul><li>Asking in front of others</li><li>"Are you using something?"</li><li>Comments or blame after the answer</li><li>Rushing to refer without explaining</li></ul></div></div>
+
+<h3>6. If the screen is positive</h3>
+<ol class="tips"><li>Thank the patient and say: "I'd like to book you an appointment at the family medicine clinic in Azm, in person or by phone. This is for your health and safety, and it has no consequences for your work or any legal matter. Is that OK with you?"<span class="pend">pending legal confirmation</span><span class="sayar">"أبغى أحجز لك موعد في عيادة طب الأسرة في مركز عزم، حضوري أو عن بعد. هذا لصحتك وسلامتك، وما يترتب عليه أي شي يخص عملك أو أي أمور قانونية. يناسبك؟"</span></li><li>If they agree: book <b>Azm triage</b> in TrakCare before they leave the clinic.</li><li>If they decline: respect it, document it, and give them the Azm QR code for direct contact.</li><li><b>Red flags at any visit</b> (severe withdrawal, intoxication, suicidal risk, psychosis): send to the Security Forces Hospital ER the same day.</li></ol>
+</section>
+
+<section class="step" id="s2" hidden>
+<h2>Quiz</h2>
+<p class="sub">Eight questions. Pass mark: 7 out of 8.</p>
+<div id="quiz"></div>
+<div id="result"></div>
+<p class="err" id="e2"></p>
+</section>
+
+<section class="step" id="s3" hidden>
+<div id="ackBox">
+<h2>Acknowledgment</h2>
+<div class="ack">
+<p>I confirm that I have completed this training. I will ask every adult patient the two screening questions once a year, or sooner if I have a clinical concern. If a patient screens positive, I will offer an Azm triage appointment and book it with their agreement. I will keep patients' answers confidential.</p>
+<label class="chk"><input type="checkbox" id="agree"> I agree</label>
+</div>
+<p class="err" id="e3"></p>
+</div>
+<div class="cert" id="cert" hidden>
+<h2>Training completed</h2>
+<p id="certTxt"></p>
+<p><b>Last step:</b> register your completion so we have your record.</p>
+<a class="reg" id="reg" href="#" target="_blank" rel="noopener">Register my completion</a>
+</div>
+</section>
+
+<div class="nav"><button class="ghost" id="back">Back</button><button id="next">Next</button></div>
+</div>
+</main>
+<script>
+{
+const Q=[
+["Who should be screened?",["Only patients who look like they use substances","Every adult once a year, at any visit","Every adult at every visit","Only patients who ask"],1,"Ask every adult once a year. Screening only patients who look at risk misses many cases."],
+["A patient answers \"once\" to Q2. What is the result?",["Negative, once is not enough","Positive","Ask again next year","Positive only if it happened this month"],1,"Any answer of 1 or more is positive."],
+["A patient answers \"no\" to the alcohol pre-screen. What do you do next?",["Ask Q1 anyway","Go to Q2","Book Azm triage","End the screening"],1,"The alcohol part is negative, but Q2 is asked of everyone."],
+["You are screening a 40-year-old woman. Which number do you use in Q1?",["5 or more drinks","4 or more drinks","3 or more drinks","Any drinking"],1,"Use 4 for women of any age and men 65 and older; 5 for men under 65."],
+["Which counts as nonmedical use of a prescription medicine?",["Paracetamol for a headache","Tramadol without a prescription, for the feeling it gives","An antibiotic taken as prescribed","Insulin"],1,"Taking a medicine for the feeling it gives, or without a prescription, is nonmedical use."],
+["Q1 is negative and Q2 is positive. Is the screen positive?",["No, both must be positive","Yes, one positive answer is enough","Only if Q2 is more than 5 times","Repeat both questions"],1,"If Q1 or Q2 is 1 or more, the screen is positive."],
+["The screen is positive and the patient agrees. What is the next step?",["Give the Azm number to call later","Book Azm triage in TrakCare before the patient leaves","Order a urine drug test","Wait until the next visit"],1,"Booking before the patient leaves makes it more likely they reach Azm."],
+["A patient has severe withdrawal symptoms or suicidal thoughts. What do you do?",["Book routine Azm triage","Send to the Security Forces Hospital ER the same day","Give the Azm QR code","Repeat the screening questions"],1,"Red flags don't wait for an appointment. Send to the ER the same day."]
+];
+const $=id=>document.getElementById(id);
+let step=0,graded=false,passed=false,score=0;
+$('fac').addEventListener('change',()=>{$('otherBox').hidden=$('fac').value!=='other'});
+const facName=()=>$('fac').value==='other'?$('facOther').value.trim():$('fac').value;
+$('quiz').innerHTML=Q.map((q,i)=>`<fieldset class="q"><legend>${i+1}. ${q[0]}</legend>${q[1].map((o,j)=>`<label class="opt" id="o${i}_${j}"><input type="radio" name="q${i}" value="${j}"><span>${o}</span></label>`).join('')}<p class="fb" id="f${i}" hidden></p></fieldset>`).join('');
+function show(){
+  for(let i=0;i<4;i++){$('s'+i).hidden=i!==step;const li=$('rail').children[i];li.className=i===step?'on':(i<step?'done':'')}
+  const finished=step===3&&!$('cert').hidden;
+  $('back').hidden=step===0||finished;
+  $('next').hidden=finished;
+  $('next').textContent=step===2?(graded?(passed?'Next':'Try again'):'Check answers'):(step===3?'Submit':'Next');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function grade(){
+  let s=0,miss=0;
+  Q.forEach((q,i)=>{if(!document.querySelector(`input[name=q${i}]:checked`))miss++});
+  if(miss){$('e2').textContent=`Please answer all questions (${miss} unanswered).`;return}
+  $('e2').textContent='';
+  Q.forEach((q,i)=>{const v=+document.querySelector(`input[name=q${i}]:checked`).value;q[1].forEach((_,j)=>$(`o${i}_${j}`).className='opt'+(j===q[2]?' right':(j===v?' wrong':'')));const f=$('f'+i);f.hidden=false;f.textContent=(v===q[2]?'Correct. ':'Not quite. ')+q[3];if(v===q[2])s++;document.querySelectorAll(`input[name=q${i}]`).forEach(r=>r.disabled=true)});
+  graded=true;passed=s>=7;score=s;
+  $('result').innerHTML=`<div class="score ${passed?'':'fail'}"><strong>${s}/8</strong><span>${passed?'Passed. Continue to the acknowledgment.':'Below the pass mark (7 out of 8). Review the feedback, then try again.'}</span></div>`;
+}
+function reset(){
+  graded=false;passed=false;$('result').innerHTML='';
+  Q.forEach((q,i)=>{document.querySelectorAll(`input[name=q${i}]`).forEach(r=>{r.disabled=false;r.checked=false});q[1].forEach((_,j)=>$(`o${i}_${j}`).className='opt');$('f'+i).hidden=true});
+}
+$('next').addEventListener('click',()=>{
+  if(step===0){
+    if(!$('nm').value.trim()||!$('cl').value||!facName()){$('e0').textContent='Please fill in your name, cluster and facility.';return}
+    $('e0').textContent='';step=1;
+  }else if(step===1){step=2}
+  else if(step===2){
+    if(!graded){grade();show();return}
+    if(!passed){reset();show();return}
+    step=3;
+  }else if(step===3){
+    if(!$('agree').checked){$('e3').textContent='Please confirm the acknowledgment.';return}
+    $('e3').textContent='';$('ackBox').hidden=true;$('cert').hidden=false;
+    const d=new Date().toLocaleDateString('en-GB',{year:'numeric',month:'long',day:'numeric'});
+    $('certTxt').textContent=`${$('nm').value.trim()} · ${facName()} · ${$('cl').value} · ${d}`;
+    const F='https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAYAAFVyitJUOVE5VzBIVllVRVlXVEtEM1oyVDZYMzM4OC4u&lang=en-US';
+    const e=encodeURIComponent;
+    $('reg').href=F+'&r4eef93ec28cb4000a84c308488f4e4a9='+e($('nm').value.trim())+'&r43f58fff590c4ec89186c1bc0ff9fbd6='+e(facName())+'&rdc89d283651e470cb2ba8bc1d13551ec='+e($('cl').value)+'&r4dd9529e3d804a8088e1d6e06fe9933c='+score+'&r5aab576ca7124fbeb49da124604ae494=Yes';
+  }
+  show();
+});
+$('back').addEventListener('click',()=>{if(step>0){step--;show()}});
+show();
+}
+</script>
+</body>
+</html>
